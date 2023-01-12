@@ -6,7 +6,7 @@ const Card = ({ children, reverse }) => {
 };
 
 Card.defaultProps = {
-  reverse: true,
+  reverse: false,
 };
 
 Card.propTypes = {
