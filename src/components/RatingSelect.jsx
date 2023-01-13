@@ -1,13 +1,18 @@
 import React from "react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-const RatingSelect = ({select}) => {
-  const [selected, setSelected] = useState(6);
+const RatingSelect = ({ select }) => {
+  const [selected, setSelected] = useState(1);
+  const { feedBackEdit } = useContext(FeedbackContext);
 
+  useEffect(() => {
+    setSelected(feedBackEdit.item.rating);
+  }, [feedBackEdit]);
 
   const handleChange = (e) => {
     setSelected(+e.currentTarget.value);
-    select(+e.currentTarget.value)
+    select(+e.currentTarget.value);
   };
   return (
     <ul className="rating">
@@ -47,7 +52,7 @@ const RatingSelect = ({select}) => {
       <li>
         <input
           type="radio"
-          id="num3"
+          id="num4"
           name="rating"
           value="4"
           onChange={handleChange}
