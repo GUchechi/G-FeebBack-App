@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const FeedbackContext = createContext();
 
@@ -25,32 +26,16 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // DeleteFeedback
-  const deleteFeedback = async (id) => {
+  const deleteFeedback = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      await fetch(`http://localhost:5000/feedback/${id}`, {
-        method: "DELETE",
-      });
-
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
 
   // AddFeedBack
-  const addFeedback = async (newFeedback) => {
-    const response = await fetch(
-      `http://localhost:5000/feedback?_sort=id&_order=desc`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newFeedback),
-      }
-    );
-
-    const data = await response.json();
-
-    setFeedback([data, ...feedback]);
+  const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4();
+    setFeedback([newFeedback, ...feedback]);
   };
 
   // EditFeedback
@@ -62,26 +47,10 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // Update Feedback item
-  const updateFeedback = async (id, updItem) => {
-    const response = await fetch(`http://localhost:5000/feedback/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updItem),
-    });
-
-    const data = await response.json();
-
-    // NOTE: no need to spread data and item
-    setFeedback(feedback.map((item) => (item.id === id ? data : item)));
-
-    // FIX: this fixes being able to add a feedback after editing
-
-    setFeedbackEdit({
-      item: {},
-      edit: false,
-    });
+  const updateFeedback = (id, updItem) => {
+    setFeedback(
+      feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
+    );
   };
 
   return (
