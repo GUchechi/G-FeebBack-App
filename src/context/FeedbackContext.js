@@ -10,11 +10,11 @@ export const FeedbackProvider = ({ children }) => {
     edit: false,
   });
 
+  // Fetch Feedback
   useEffect(() => {
     fetchFeedback();
   }, []);
 
-  // Fetch Feedback
   const fetchFeedback = async () => {
     const response = await fetch(
       `http://localhost:5000/feedback?_sort=id&_order=desc`
@@ -22,17 +22,6 @@ export const FeedbackProvider = ({ children }) => {
     const data = await response.json();
     setFeedback(data);
     setIsLoading(false);
-  };
-
-  // DeleteFeedback
-  const deleteFeedback = async (id) => {
-    if (window.confirm("Are you sure you want to delete?")) {
-      await fetch(`http://localhost:5000/feedback/${id}`, {
-        method: "DELETE",
-      });
-
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
   };
 
   // AddFeedBack
@@ -51,6 +40,17 @@ export const FeedbackProvider = ({ children }) => {
     const data = await response.json();
 
     setFeedback([data, ...feedback]);
+  };
+
+  // DeleteFeedback
+  const deleteFeedback = async (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      await fetch(`http://localhost:5000/feedback/${id}`, {
+        method: "DELETE",
+      });
+
+      setFeedback(feedback.filter((item) => item.id !== id));
+    }
   };
 
   // EditFeedback

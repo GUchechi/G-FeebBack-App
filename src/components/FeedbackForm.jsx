@@ -12,6 +12,7 @@ const FeedbackForm = () => {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
 
+  // Edit Feedback
   useEffect(() => {
     if (feedBackEdit.edit === true) {
       setBtnDisabled(false);
@@ -20,6 +21,8 @@ const FeedbackForm = () => {
     }
   }, [feedBackEdit]);
 
+
+  // Form Validation
   const handleTextChange = (e) => {
     if (text === "") {
       setBtnDisabled(true);
