@@ -91,7 +91,14 @@ header {
   color: #fff;
 }
 
+[type="radio"] {
+  opacity: 0;
+}
 
+[type="radio"]:checked ~ label {
+  background: #ff6a95;
+  color: #fff;
+}
 
 .input-group {
   display: flex;
