@@ -14,6 +14,16 @@ const FeedbackData = [
     rating: 7,
     text: "This is feedback item 3",
   },
+  {
+    id: 4,
+    rating: 8,
+    text: "This is feedback item 4",
+  },
+  {
+    id: 5,
+    rating: 5,
+    text: "This is feedback item 5",
+  },
 ];
 
 export default FeedbackData;
