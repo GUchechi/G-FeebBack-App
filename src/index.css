@@ -179,11 +179,6 @@ input:focus {
   opacity: 1;
 }
 
-.message {
-  padding-top: 10px;
-  text-align: center;
-  color: rebeccapurple;
-}
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
  * document */
