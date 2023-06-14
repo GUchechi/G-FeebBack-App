@@ -194,14 +194,7 @@ input:focus {
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
  * document */
-.about-link a {
-  color: #fff;
-  cursor: pointer;
-}
 
-.about-link a:hover {
-  color: #ff6a95;
-}
 
 .about h1 {
   margin-bottom: 20px;
