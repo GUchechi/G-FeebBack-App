@@ -168,11 +168,7 @@ input:focus {
   opacity: 0.9;
 }
 
-.btn:disabled {
-  background-color: #cccccc;
-  color: #333;
-  cursor: auto;
-}
+
 
 .btn:disabled:hover {
   transform: scale(1);
