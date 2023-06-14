@@ -145,15 +145,7 @@ input:focus {
   right: 40px;
 }
 
-.btn {
-  color: #fff;
-  border: 0;
-  border-radius: 8px;
-  color: #fff;
-  width: 100px;
-  height: 40px;
-  cursor: pointer;
-}
+
 
 .btn-primary {
   background-color: #202142;
